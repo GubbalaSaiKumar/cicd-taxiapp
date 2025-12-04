@@ -8,7 +8,6 @@ environment {
     PATH = "/opt/apache-maven-3.9.11/bin:$PATH"
     SONAR_TOKEN = credentials('SONAR_TOKEN')   
 }
-   stages {
         stage("build"){
             steps {
                  echo "----------- build started ----------"
@@ -16,7 +15,6 @@ environment {
                  echo "----------- build complted ----------"
             }
         }
-    }
     stage("test"){
         steps{
             echo "----------- unit test started ----------"
@@ -25,8 +23,8 @@ environment {
             }
     }
     stage("SonarQube Analysis") {
-            steps {
-                script {
+        steps {
+            script {
                     // Run SonarQube analysis
                     sh """
                     mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:3.9.1.2184:sonar \
@@ -35,7 +33,7 @@ environment {
                     -Dsonar.host.url=https://sonarcloud.io \
                     -Dsonar.token=${SONAR_TOKEN}
                     """
-                }
             }
         }
+    }
 }
