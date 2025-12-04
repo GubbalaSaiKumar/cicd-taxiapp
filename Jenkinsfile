@@ -8,11 +8,13 @@ environment {
     PATH = "/opt/apache-maven-3.9.11/bin:$PATH"
     SONAR_TOKEN = credentials('SONAR_TOKEN')   
     }
-    stage("build") {
-        steps {
-             echo "----------- build started ----------"
-            sh 'mvn package'
-             echo "----------- build complted ----------"
+    stages {
+        stage("build") {
+            steps {
+                 echo "----------- build started ----------"
+                sh 'mvn package'
+                 echo "----------- build complted ----------"
+            }
         }
     }
     stage("test") {
