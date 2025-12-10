@@ -6,7 +6,7 @@ pipeline {
     }
 environment {
     PATH = "/opt/apache-maven-3.9.11/bin:$PATH"
-    
+    SONAR_TOKEN = credentials('SONAR_TOKEN')
 }
    stages {
         stage("build"){
