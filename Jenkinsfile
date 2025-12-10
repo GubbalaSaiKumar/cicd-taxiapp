@@ -1,5 +1,4 @@
 def registry = 'https://taxi11.jfrog.io/artifactory'
-
 pipeline {
     agent {
         node {
@@ -39,7 +38,8 @@ environment {
                 }
             }
         }
-        stage("Jar Publish") {
+    }
+    stage("Jar Publish") {
         steps {
             script {
                     echo '<--------------- Jar Publish Started --------------->'
@@ -63,5 +63,4 @@ environment {
              }
         }   
     }
-}
 }
